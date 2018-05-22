@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашнаяя страница администратора</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="w3-container">
+    <br>
+
+    <div>
+        <div style="display:inline-block;">
+            <form action="#">
+                <button class="w3-button w3-circle w3-teal fa fa-home w3-large"></button>
+            </form>
+        </div>
+        <div style="display:inline-block;">
+            <form action="#" th:action="@{/login}" method="get">
+                <button class="w3-button w3-circle w3-teal fa fa-sign-out w3-large"></button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <form action="#" th:action="@{/users}" method="get">
+        <button type="submit" class="w3-button w3-blue">Список пользователей</button>
+    </form>
+
+    <br>
+    <form action="#" th:action="@{/user/all/accounts}" method="get">
+        <button type="submit" class="w3-button w3-red">Список счетов</button>
+    </form>
+
+    <br>
+    <form action="#" th:action="@{/user/all/operations}" method="get">
+        <button type="submit" class="w3-button w3-yellow">Список операций</button>
+    </form>
+</div>
+</body>
+</html>

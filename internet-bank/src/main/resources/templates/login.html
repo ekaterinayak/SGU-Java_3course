@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Вход в систему</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="w3-container">
+    <br>
+
+    <div>
+        <div style="display:inline-block;">
+            <form action="#">
+                <button class="w3-button w3-circle w3-teal fa fa-home w3-large"></button>
+            </form>
+        </div>
+        <div style="display:inline-block;">
+            <form action="#">
+                <button class="w3-button w3-circle w3-teal fa fa-sign-out w3-large"></button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="w3-container w3-teal">
+        <h2>Введите свои данные</h2>
+    </div>
+
+    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+        <p><label class="w3-text-teal">Логин</label><input class="w3-input w3-border w3-light-grey" type="text" th:field="*{login}"/></p>
+        <p><label class="w3-text-teal">Пароль</label><input class="w3-input w3-border w3-light-grey" type="password" th:field="*{password}"/></p>
+        <br>
+        <p><button type="submit" class="w3-button w3-deep-orange">Войти</button></p>
+    </form>
+
+    <form action="#" th:action="@{/registration}" method="get">
+        <p><button type="submit" class="w3-button w3-blue">Зарегистрироваться</button></p>
+    </form>
+</div>
+</body>
+</html>

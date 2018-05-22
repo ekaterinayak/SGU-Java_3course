@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список счетов</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="w3-container">
+    <br>
+
+    <div>
+        <div style="display:inline-block;">
+            <form action="#" th:action="@{${userId == 'all' ? '/home-admin' : '/home/' + userId}}" method="get">
+                <button class="w3-button w3-circle w3-teal fa fa-home w3-large"></button>
+            </form>
+        </div>
+        <div style="display:inline-block;">
+            <form action="#" th:action="@{/login}" method="get">
+                <button class="w3-button w3-circle w3-teal fa fa-sign-out w3-large"></button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <table border="1" class="w3-table-all">
+        <tr class="w3-blue">
+            <th>Номер счета</th>
+            <th>Сумма</th>
+        </tr>
+        <tr th:each="account : ${accounts}">
+            <td th:text="${account.accountNumber}"/>
+            <td th:text="${account.amount}"/>
+        </tr>
+    </table>
+
+    <br>
+    <form action="#" th:action="@{|/user/${userId}/add-account|}" method="get">
+        <button type="submit" th:classappend="${hidden} ? 'w3-hide' : 'w3-show'" class="w3-button w3-green">Добавить счет</button>
+    </form>
+</div>
+</body>
+</html>

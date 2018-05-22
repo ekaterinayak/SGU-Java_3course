@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список операций</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="w3-container">
+    <br>
+
+    <div>
+        <div style="display:inline-block;">
+            <form action="#" th:action="@{${userId == 'all' ? '/home-admin' : '/home/' + userId}}" method="get">
+                <button class="w3-button w3-circle w3-teal fa fa-home w3-large"></button>
+            </form>
+        </div>
+        <div style="display:inline-block;">
+            <form action="#" th:action="@{/login}" method="get">
+                <button class="w3-button w3-circle w3-teal fa fa-sign-out w3-large"></button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <form action="#" th:action="@{|/user/${userId}/operations|}" th:object="${rollbackOperation}" method="post">
+        <table border="1" class="w3-table-all">
+            <tr class="w3-blue">
+                <th/>
+                <th>Счёт отправления</th>
+                <th>Счёт получения</th>
+                <th>Сумма</th>
+                <th>Отменена</th>
+            </tr>
+            <tr th:each="operation : ${operations}" th:action="@{/registration}">
+                <td><input type="radio" th:field="*{operationId}" th:value="${operation.id}" class="w3-radio"/></td>
+                <td th:text="${operation.sender.accountNumber}"/>
+                <td th:text="${operation.receiver.accountNumber}"/>
+                <td th:text="${operation.amount}"/>
+                <td><input type="checkbox" th:checked="${operation.reverse}" disabled="true" class="w3-check"/></td>
+            </tr>
+        </table>
+
+        <br/>
+        <button type="submit" th:classappend="${admin} ? 'w3-show' : 'w3-hide'" class="w3-button w3-aqua">Отменить операцию</button>
+    </form>
+
+    <form action="#" th:action="@{|/user/${userId}/add-operation|}" method="get">
+        <button type="submit" th:classappend="${admin} ? 'w3-hide' : 'w3-show'" class="w3-button w3-lime">Добавить операцию</button>
+    </form>
+</div>
+</body>
+</html>

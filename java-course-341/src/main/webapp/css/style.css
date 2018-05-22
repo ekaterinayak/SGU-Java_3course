@@ -1,0 +1,14 @@
+.field {
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.fieldfield input {
+    float: right;
+    height: 19px;
+    line-height: 19px;
+    margin: 0px;
+    padding: 0px 5px;
+    width: 287px;
+    border: 1px solid #ABADB3;
+}

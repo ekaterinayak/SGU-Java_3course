@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователей</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="w3-container">
+    <br>
+    <div>
+        <div style="display:inline-block;">
+            <form action="#" th:action="@{/home-admin}" method="get">
+                <button class="w3-button w3-circle w3-teal fa fa-home w3-large"></button>
+            </form>
+        </div>
+        <div style="display:inline-block;">
+            <form action="#" th:action="@{/login}" method="get">
+                <button class="w3-button w3-circle w3-teal fa fa-sign-out w3-large"></button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <form action="#" th:action="@{/users}" th:object="${userDto}" method="post">
+        <table border="1" class="w3-table-all">
+            <tr class="w3-blue">
+                <th/>
+                <th>Логин</th>
+                <th>Администратор</th>
+            </tr>
+            <tr th:each="user : ${users}" th:action="@{/registration}">
+                <td><input type="radio" th:field="*{userId}" th:value="${user.id}" class="w3-radio"/></td>
+                <td th:text="${user.login}"/>
+                <td><input type="checkbox" th:checked="${user.admin}" disabled="true" class="w3-check"/></td>
+            </tr>
+        </table>
+
+        <br>
+        <button type="submit" name="action" value="remove" class="w3-button w3-red">Удалить пользователя</button>
+
+        <br>
+        <br>
+        <button type="submit" name="action" value="edit" class="w3-button w3-yellow">Редактировать пользователя</button>
+
+        <br>
+        <br>
+        <button type="submit" name="action" value="show" class="w3-button w3-cyan">Посмотреть пользователя</button>
+    </form>
+
+    <br>
+    <form action="#" th:action="@{/add-user}" method="get">
+        <button type="submit" class="w3-button w3-green">Добавить пользователя</button>
+    </form>
+</div>
+</body>
+</html>
